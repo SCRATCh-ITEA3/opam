@@ -1,0 +1,14 @@
+opam(){
+    su - opam -l -c "opam $*"
+}
+depext(){
+    opam depext  --noninteractive --list $@
+}
+depext_add(){
+    depext $@ | xargs apk add
+}
+
+echo '`opam` will run as opam user'
+echo '`depext` will list system dependencien for opam packages'
+echo '`depext_add` install the dependencies'
+echo 'when done, you schould switch to `USER opam` user'
