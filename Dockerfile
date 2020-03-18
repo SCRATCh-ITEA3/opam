@@ -23,7 +23,8 @@ RUN install -g root -o root -m 0777 /home/opam/.opam/$OCAML_VERISON/lib/opam-dev
 RUN install -g root -o root -m 0777 /tmp/opam_init /etc/profile.d/opam
 ADD dotprofile /root/.profile
 USER opam
-RUN opam init --reinit --disable-sandboxing -a
+RUN opam init -a
+RUN opam update
 SHELL ["/bin/ash","-l","-c"]
 RUN opam install -y depext
 RUN opam uninstall -y -a opam-devel 
